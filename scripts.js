@@ -1,6 +1,6 @@
 const ramaisPorPagina = 13; // Número de ramais por página
 let paginaAtual = 1; // Página inicial
-let senhaAutenticada = false; // Variável para armazenar o estado de autenticação
+let senhaAutenticada = localStorage.getItem('senhaAutenticada'); // Variável para armazenar o estado de autenticação
 let maquinasVisiveis = false; // Variável para armazenar o estado de visibilidade das máquinas
 
 // Função para carregar os ramais da página atual
@@ -77,14 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(error => console.error("Erro ao carregar os ramais:", error));
     
-    // Carrega a senha a partir do arquivo JSON
-    fetch("https://gruposmi.github.io/database/password.json")
-      .then(response => response.json())
-      .then(data => {
-        senhaCorreta = data[0].senha;
-      })
-      .catch(error => console.error("Erro ao carregar a senha:", error));
-    
     // Outras inicializações, como definir a data da última atualização
     const dataUltimaAtualizacao = "21/02/2025";
     const ultimaAtualizacaoElement = document.getElementById("ultima-atualizacao");
@@ -98,14 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Evento para o clique no ícone de olho que alterna a visibilidade das máquinas
     document.querySelector('.fa-eye').addEventListener('click', function() {
         if (!senhaAutenticada) {
-            const senha = prompt("Digite a senha para liberar o nome das máquinas:");
-            if (senha === senhaCorreta) {
-                senhaAutenticada = true;
-                maquinasVisiveis = true;
-            } else {
-                alert("Senha incorreta!");
-                return;
-            }
+            window.location.href = "login.html";
         } else {
             maquinasVisiveis = !maquinasVisiveis;
         }
