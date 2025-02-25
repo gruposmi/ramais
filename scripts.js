@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Evento para o clique no ícone de olho que alterna a visibilidade das máquinas
     document.querySelector('.fa-eye').addEventListener('click', function() {
-        if (!senhaAutenticada) {
+        if (senhaAutenticada !== 'true') {
             window.location.href = "login.html";
         } else {
             maquinasVisiveis = !maquinasVisiveis;
