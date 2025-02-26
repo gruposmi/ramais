@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.error("Erro ao carregar os ramais:", error));
     
     // Outras inicializações, como definir a data da última atualização
-    const dataUltimaAtualizacao = "21/02/2025";
+    const dataUltimaAtualizacao = "25/02/2025";
     const ultimaAtualizacaoElement = document.getElementById("ultima-atualizacao");
     ultimaAtualizacaoElement.textContent = `Atualizado em ${dataUltimaAtualizacao}`;
   
